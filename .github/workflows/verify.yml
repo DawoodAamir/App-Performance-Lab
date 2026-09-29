@@ -1,0 +1,16 @@
+name: Build and test
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test core behavior
+        run: swift test
+      - name: Build iOS application
+        run: xcodebuild -project "App Performance Lab.xcodeproj" -scheme "App Performance Lab" -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO build
