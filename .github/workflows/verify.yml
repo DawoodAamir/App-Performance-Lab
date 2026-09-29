@@ -9,7 +9,7 @@ jobs:
   verify:
     runs-on: macos-15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Test core behavior
         run: swift test
       - name: Build iOS application
